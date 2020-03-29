@@ -29,7 +29,6 @@ todoRoutes.route('/').get(function(req, res) {
       res.json(todos);
     }
   });
-  // res.status(200).json({ todo: 'todo added successfully' });
 });
 
 todoRoutes.route('/:id').get(function(req, res) {
