@@ -1,6 +1,2 @@
-{
-  "todo_description": 'postman test',
-  "todo_assignee": 'postman',
-  "todo_priority": 'High',
-  "todo_completed": false
-};
+TODO:
+automate frontend and backend launching
