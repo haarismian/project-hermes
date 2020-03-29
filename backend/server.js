@@ -29,6 +29,7 @@ todoRoutes.route('/').get(function(req, res) {
       res.json(todos);
     }
   });
+  // res.status(200).json({ todo: 'todo added successfully' });
 });
 
 todoRoutes.route('/:id').get(function(req, res) {
@@ -42,7 +43,7 @@ todoRoutes.route('/update/:id').post(function(req, res) {
   Todo.findById(req.params.id, function(err, todo) {
     if (!todo) res.status(404).send('data is not found');
     else todo.todo_description = req.body.todo_description;
-    todo.todo_responsible = req.body.todo_responsible;
+    todo.todo_assignee = req.body.todo_assignee;
     todo.todo_priority = req.body.todo_priority;
     todo.todo_completed = req.body.todo_completed;
 
@@ -70,7 +71,6 @@ todoRoutes.route('/add').post(function(req, res) {
 });
 
 app.use('/todos', todoRoutes);
-
 app.listen(PORT, function() {
   console.log('Server is running on Port: ' + PORT);
 });
