@@ -11,6 +11,8 @@ import {
   Typography
 } from '@material-ui/core';
 
+import axios from 'axios';
+
 export default class CreateTodo extends Component {
   constructor(props) {
     super(props);
@@ -40,10 +42,18 @@ export default class CreateTodo extends Component {
     });
   };
   onSubmit = e => {
-    console.log(`Form submitted:`);
-    console.log(`Todo Description: ${this.state.todo_description}`);
-    console.log(`Todo Assignee: ${this.state.todo_assignee}`);
-    console.log(`Todo Priority: ${this.state.todo_priority}`);
+    e.preventDefault();
+
+    const newTodo = {
+      todo_description: this.state.todo_description,
+      todo_assignee: this.state.todo_assignee,
+      todo_priority: this.state.todo_priority,
+      todo_completed: this.state.todo_completed
+    };
+
+    axios
+      .post('http://localhost:4000/todos/add', newTodo)
+      .then(res => console.log(res.data));
 
     this.setState({
       todo_description: '',
